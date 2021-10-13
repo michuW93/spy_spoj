@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,8 +18,15 @@ public class MainFaster {
         sort(input);
     }
 
-    public static void sort(ArrayList<String> input) {
+    public static void sort(ArrayList<String> input) throws IOException {
         Collections.sort(input);
-        input.forEach(System.out::println);
+
+        BufferedWriter output = new BufferedWriter(
+                new OutputStreamWriter(System.out));
+
+        for (String element : input){
+            output.write(element + "\n");
+        }
+        output.flush();
     }
 }
